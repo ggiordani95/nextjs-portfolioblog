@@ -18,10 +18,26 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "controllers/*": [ "src/controllers/*" ],
+      "helpers/*": [ "src/helpers/*" ],
+      "utils/*": [ "src/utils/*" ],
+      "components/*": [ "src/components/*" ],
+      "interfaces/*": [ "src/interfaces/*" ],
+      "middlewares/*": [ "src/middlewares/*" ],
+      "models/*": [ "src/models/*" ],
+      "routes/*": [ "src/routes/*" ],
+      "services/*": [ "src/services/*" ],
+      "validations/*": [ "src/validations/*" ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/controllers/CreatePostController.js", "src/routes.js", "index.js", "src/database/prismaClient.js"],
   "exclude": ["node_modules"]
 }
