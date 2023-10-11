@@ -1,9 +1,12 @@
-import React from "react";
+"use client";
 import Image from "next/image";
 import me from "../../../public/assets/me.png";
 import brazil from "../../../public/assets/brazil.png";
-
+import { navbarAnchors } from "./utils";
+import { Anchors } from "./types";
+import { usePathname } from "next/navigation";
 function Navbar() {
+  const pathname = usePathname();
   return (
     <section className="w-full flex flex-col gap-12 h-56 ">
       <div className="w-full flex flex-row  gap-4 items-center justify-between">
@@ -32,6 +35,8 @@ function Navbar() {
                 height={14}
                 alt="brazil"
                 className="ml-2"
+                style={{ height: "auto", width: "auto" }}
+                priority
               />
             </div>
           </div>
@@ -39,24 +44,22 @@ function Navbar() {
       </div>
       <div className="w-full flex flex-row-reverse font-light">
         <ul className="gap-4 flex flex-row">
-          <li>
-            <a
-              href=""
-              className="hover:text-zinc-400 duration-200 transition-all"
-            >
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a href="" className="text-zinc-300 underline underline-offset-4">
-              Portfolio
-            </a>
-          </li>
-          <li>
-            <a href="" className="text-zinc-300 underline underline-offset-4">
-              Posts
-            </a>
-          </li>
+          {navbarAnchors.map((anchor: Anchors) => {
+            return (
+              <li key={anchor.id}>
+                <a
+                  href={anchor.href}
+                  className={`hover:text-zinc-400 duration-200  transition-all active:text-blue-400 ${
+                    pathname === anchor.href
+                      ? "text-white"
+                      : "underline text-zinc-400 "
+                  }`}
+                >
+                  {anchor.name}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
