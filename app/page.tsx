@@ -2,16 +2,14 @@ import Navbar from "components/Navbar";
 import TechStack from "components/TechStack";
 import SocialMedias from "components/SocialMedias";
 import ActAreas from "components/ActAreas";
+import MainStructure from "components/MainStructure";
 
 export default async function Home() {
   return (
-    <main className="flex w-full min-h-screen flex-col items-center p-16 ">
-      <div className="max-w-2xl">
-        <Navbar />
-        <ActAreas />
-        <TechStack />
-        <SocialMedias />
-      </div>
-    </main>
+    <MainStructure>
+      <ActAreas />
+      <TechStack />
+      <SocialMedias />
+    </MainStructure>
   );
 }

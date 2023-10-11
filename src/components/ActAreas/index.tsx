@@ -3,7 +3,7 @@ import React from "react";
 function ActAreas() {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col sm:flex-row mt-16 gap-2 items-center justify-between">
+      <div className="flex flex-col sm:flex-row mt-16 gap-2 items-center justify-between ">
         <div className="flex flex-row gap-2 items-center justify-center">
           <p className="italic font-bold text-xl">1.</p>
           <p className="pr-2 w-full">

@@ -1,16 +1,13 @@
 "use client";
-import Image from "next/image";
-import me from "../../../public/assets/me.png";
-import brazil from "../../../public/assets/brazil.png";
 import { navbarAnchors } from "./utils";
 import { Anchors } from "./types";
 import { usePathname } from "next/navigation";
 function Navbar() {
   const pathname = usePathname();
   return (
-    <section className="w-full flex flex-col gap-12 h-56" id="nav">
-      <div className="w-full flex flex-row-reverse font-light">
-        <ul className="gap-4 flex flex-row">
+    <section className="w-[720px] flex flex-col gap-12 h-56" id="nav">
+      <div className="w-full flex font-light">
+        <ul className="gap-4 flex flex-row w-full justify-end">
           {navbarAnchors.map((anchor: Anchors) => {
             return (
               <li key={anchor.id}>
