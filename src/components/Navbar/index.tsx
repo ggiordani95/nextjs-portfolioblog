@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import me from "../../../public/assets/me.png";
+import brazil from "../../../public/assets/brazil.png";
 
 function Navbar() {
   return (
@@ -11,8 +12,8 @@ function Navbar() {
             <Image
               className="rounded-lg"
               src={me}
-              width={60}
-              height={60}
+              width={48}
+              height={48}
               alt="me"
             />
           </div>
@@ -21,9 +22,18 @@ function Navbar() {
             <h2 className="text-xl font-semibold text-zinc-300">
               Gustavo Giordani
             </h2>
-            <p className="italic text-sm font-light opacity-60">
-              ggiordani1995@hotmail.com
-            </p>
+            <div className="flex flex-row  items-center">
+              <p className="italic text-sm font-light opacity-60">
+                Caxias do Sul, Brasil
+              </p>
+              <Image
+                src={brazil}
+                width={14}
+                height={14}
+                alt="brazil"
+                className="ml-2"
+              />
+            </div>
           </div>
         </div>
       </div>
