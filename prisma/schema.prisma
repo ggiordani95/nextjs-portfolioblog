@@ -19,11 +19,12 @@ model Author {
 }
 
 model Post {
-  id       Int    @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   title    String
   content  String
   authorId Int
-  author   Author @relation(fields: [authorId], references: [id])
+  date     DateTime @default(now())
+  author   Author   @relation(fields: [authorId], references: [id])
 
   @@map("posts")
 }

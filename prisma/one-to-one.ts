@@ -6,4 +6,4 @@ prisma.author.findMany({
     include:{
         posts: true
     }
-}) 
+})

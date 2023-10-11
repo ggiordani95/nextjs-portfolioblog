@@ -8,6 +8,7 @@ type TPost = {
     title: string,
     content: string,
     authorId: number,
+    
 }
 
 export default async function handler(
@@ -17,7 +18,7 @@ export default async function handler(
     if(req.method === 'POST'){
         try {
             const post:TPost = req.body
-            console.log(req.body, post)
+   
             const data = await prisma.post.create({
                 data:{
                     id: post.id,
