@@ -31,12 +31,11 @@ async function Posts() {
         posts.map((post: PostResponse) => {
           return (
             <React.Fragment key={post.id}>
-              <div>
+              <div className="flex flex-row gap-2 items-center justify-center">
                 <p className="text-2xl font-semibold tracking-tighter">
                   {post.title}
-                  {post.authorId}
-                  {post?.author?.name}
                 </p>
+                <h1 className="text-sm">{post.content}</h1>
               </div>
             </React.Fragment>
           );
