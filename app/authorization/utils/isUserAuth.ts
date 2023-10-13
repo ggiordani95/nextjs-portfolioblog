@@ -4,7 +4,6 @@ type TForm = {
 };
 
 export async function isUserAuth(login: TForm) {
-  console.log("login", login);
   const username = process.env.API_USERNAME;
   const password = process.env.API_PASSWORD;
   const credentials = btoa(username + ":" + password);

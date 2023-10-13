@@ -5,7 +5,7 @@ async function getPosts() {
   const base64Credentials = btoa(
     `${process.env.API_USERNAME}:${process.env.API_PASSWORD}`
   );
-  const res = await fetch("http://localhost:3000/api/getPosts", {
+  const res = await fetch(`${process.env.BASE_URL}/api/get-posts`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Basic ${base64Credentials}`,
@@ -17,6 +17,7 @@ async function getPosts() {
 }
 async function Posts() {
   const posts = await getPosts();
+  console.log(posts);
 
   interface PostResponse extends Post {
     author: {

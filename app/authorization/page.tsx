@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { serverAction } from "../../utils/serverAction";
-import { isUserAuth } from "./utils/fetchingCookies";
+import { isUserAuth } from "./utils/isUserAuth";
 import { serverActionDelete } from "../../utils/serverActionDelete";
 
 const LoginPage = () => {

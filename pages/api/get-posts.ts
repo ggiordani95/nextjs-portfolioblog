@@ -14,7 +14,6 @@ export default async function handler(
                 include: { author: true }
             });
             return res.status(200).json(data);
-            
         } catch (error) {
             return res.status(500).json(error)
         }
