@@ -1,7 +1,7 @@
 import React from "react";
 
-function page() {
+async function Page() {
   return <div>Creating</div>;
 }
 
-export default page;
+export default Page;

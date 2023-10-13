@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
-import { verifyAuthorization } from "./verifyAuth";
 
 const prisma = new PrismaClient();
 
@@ -17,7 +16,7 @@ export default async function handler(
     if(req.method === 'POST'){
         try {
             const post:TPost = req.body
-            verifyAuthorization(req, res)
+
             const data = await prisma.post.create({
                 data:{
                     title: post.title,
@@ -25,6 +24,7 @@ export default async function handler(
                     authorId: post.authorId,
                 }
             });
+            
             return res.status(200).json(data)
         } catch (error) {
             return res.status(500).json('error')

@@ -6,7 +6,12 @@ const nextConfig = {
         POST_PASS: process.env.POST_PASSWORD,
         API_USERNAME: process.env.API_USERNAME,
         API_PASSWORD: process.env.API_PASSWORD,
-    }
+        COOKIE_SECRET: process.env.COOKIE_SECRET
+    },
+    experimental: {
+        serverActions: true,
+    },
+      
 
 }
 

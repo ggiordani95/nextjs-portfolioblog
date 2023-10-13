@@ -1,22 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { serverAction } from "../../utils/serverAction";
+import { isUserAuth } from "./utils/fetchingCookies";
+import { serverActionDelete } from "../../utils/serverActionDelete";
 
 const LoginPage = () => {
+  const router = useRouter();
   const [user, setUser] = useState({
     username: "",
     pass: "",
   });
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    if (
-      user.username == process.env.POST_USER &&
-      user.pass == process.env.POST_PASS
-    ) {
-      window.location.href = "/creating-post";
-    } else {
-      setError("error");
+  useEffect(() => {
+    (async () => {
+      await serverActionDelete();
+    })();
+  }, []);
+
+  const handleSubmit = async () => {
+    const response = await isUserAuth({
+      username: user.username,
+      pass: user.pass,
+    });
+    if (response) {
+      if (response.status === 401) {
+        setError("Informações incorretas!");
+        return;
+      }
+      await serverAction();
+      router.push("/creating-post");
     }
   };
 
