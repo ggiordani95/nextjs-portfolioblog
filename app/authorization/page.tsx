@@ -1,6 +1,7 @@
 "use client";
+
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { serverAction } from "../../utils/serverAction";
 import { isUserAuth } from "./utils/isUserAuth";
 import { serverActionDelete } from "../../utils/serverActionDelete";
@@ -13,13 +14,14 @@ const LoginPage = () => {
   });
   const [error, setError] = useState("");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     (async () => {
       await serverActionDelete();
     })();
   }, []);
+  const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
 
-  const handleSubmit = async () => {
     const response = await isUserAuth({
       username: user.username,
       pass: user.pass,
