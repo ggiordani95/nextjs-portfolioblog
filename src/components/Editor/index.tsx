@@ -2,52 +2,8 @@
 import React, { useState } from "react";
 import TextEditorInputs from "./Inputs";
 import useSortedElements from "context/sortedElements/useSortedElements";
-
-type EditComponent = {
-  id: number;
-  name: string;
-  tailwindStyle: string;
-  description: string | null;
-  component: JSX.Element;
-};
-
-const EditorComponents: EditComponent[] = [
-  {
-    id: 0,
-    name: "H1",
-    tailwindStyle: "text-4xl",
-    description: "Título",
-    component: <h1 className="text-zinc-400 text-4xl">H1</h1>,
-  },
-  {
-    id: 1,
-    name: "H2",
-    tailwindStyle: "text-2xl",
-    description: "Sub-Título",
-    component: <h2 className="text-zinc-400 text-2xl">H2</h2>,
-  },
-  {
-    id: 2,
-    name: "p",
-    tailwindStyle: "text-md",
-    description: "Parágrafo",
-    component: <h2 className="text-zinc-400 text-md">p</h2>,
-  },
-  {
-    id: 3,
-    name: "Tailwind",
-    tailwindStyle: "text-md",
-    description: null,
-    component: <p className="text-zinc-400">Tailwind</p>,
-  },
-  {
-    id: 4,
-    name: "Code",
-    tailwindStyle: "text-md",
-    description: null,
-    component: <p className="text-zinc-400">Code Example</p>,
-  },
-];
+import { EditorComponents } from "./utils";
+import useActions from "./useActions";
 
 function Editor() {
   const [selectedComponent, setSelectedComponent] =
@@ -55,14 +11,11 @@ function Editor() {
 
   const context: any = useSortedElements();
 
-  function addingTopic(idComponent: number) {
-    setSelectedComponent(EditorComponents[idComponent]);
-    context.addingTopic();
-  }
-  function removingTopic() {
-    setSelectedComponent(null);
-    context.removingTopic();
-  }
+  const { Formatter, addingTopic, removingTopic } = useActions({
+    context,
+    setSelectedComponent,
+    EditorComponents,
+  });
 
   return (
     <div className="flex flex-col w-full h-full bg-zinc-800">
@@ -105,7 +58,13 @@ function Editor() {
           )}
         </div>
 
-        <div className="w-[72rem] bg-zinc-900  h-full select-none "></div>
+        <div className="w-[72rem] bg-zinc-900  h-full select-none ">
+          {context.sortedTopics.map((topic: any) => (
+            <React.Fragment key={topic.index}>
+              <div className="w-full px-16">{Formatter(topic)}</div>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );

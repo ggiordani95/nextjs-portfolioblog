@@ -18,16 +18,6 @@ function TextEditorInputs({
   const { changingTopics, sortedTopics, currentIndex }: any =
     useSortedElements();
 
-  function formatter(Object: any) {
-    return (
-      <div className={`w-full flex flex-row justify-${Object.align}`}>
-        <p className={`font-${Object.font} ${Object.tailwindStyle}`}>
-          {Object.content}
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col justify-center ">
       <input
