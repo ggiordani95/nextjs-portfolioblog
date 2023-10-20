@@ -1,13 +1,14 @@
 import React from "react";
-import Editor from "components/RichEditorText/index";
+import Editor from "components/Editor/index";
+import { SortedTopicsProvider } from "context/sortedElements";
 
 async function Page() {
   return (
-    <main className="mx-auto flex min-h-screen w-full items-center justify-center text-white">
-      <section className="flex w-[20rem] flex-col space-y-10">
+    <SortedTopicsProvider>
+      <main className="mx-auto flex h-screen w-full items-center justify-center text-white">
         <Editor />
-      </section>
-    </main>
+      </main>
+    </SortedTopicsProvider>
   );
 }
 

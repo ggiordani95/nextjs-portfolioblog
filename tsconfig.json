@@ -38,6 +38,6 @@
       "module": "commonjs"
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/controllers/CreatePostController.js", "src/routes.js", "index.js", "src/database/prismaClient.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/controllers/CreatePostController.js", "src/routes.js", "index.js", "src/database/prismaClient.js", "src/components/Editor/index.jsx", "src/components/Editor/index.jsx", "src/components/Editor/index.jsx", "src/components/Editor/onChange/onChange.jsx", "src/components/Editor/themes/ExampleTheme.js", "src/components/Editor/EditorConfig/index.js", "src/components/Editor/nodes/EmojiNode.js", "pages/middleware.js"],
   "exclude": ["node_modules"]
 }

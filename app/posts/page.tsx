@@ -17,7 +17,6 @@ async function getPosts() {
 }
 async function Posts() {
   const posts = await getPosts();
-  console.log(posts);
 
   interface PostResponse extends Post {
     author: {
