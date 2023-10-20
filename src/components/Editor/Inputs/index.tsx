@@ -13,7 +13,6 @@ function TextEditorInputs({
     content: "",
     align: "start",
     tailwindStyle: tailwindStyle,
-    index: 1,
   });
 
   const { changingTopics, sortedTopics, currentIndex }: any =
@@ -28,7 +27,7 @@ function TextEditorInputs({
       </div>
     );
   }
-  console.log(sortedTopics.length);
+
   return (
     <div className="flex flex-col justify-center ">
       <input

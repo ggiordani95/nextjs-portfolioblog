@@ -16,19 +16,20 @@ const SortedTopicsProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   function changingTopics(topic: Topic) {
-    console.log(sortedTopics);
+    console.log(sortedTopics.length, sortedTopics);
+
     const topicFinded = sortedTopics?.findIndex(
       (element) => element.index === currentIndex
     );
     if (topicFinded) {
-      sortedTopics?.splice(topicFinded, 1, topic);
-      setSortedTopics(sortedTopics);
+      setSortedTopics(
+        sortedTopics?.splice(topicFinded, 1, { ...topic, index: currentIndex })
+      );
     } else {
-      const length = sortedTopics.length;
-      if (length === 0) {
-        const topicAdded = { ...topic, index: length };
-        setSortedTopics([topicAdded]);
-        return;
+      if (sortedTopics.length === 0) {
+        setSortedTopics([{ ...topic, index: 0 }]);
+      } else {
+        setSortedTopics([...sortedTopics, { ...topic, index: currentIndex }]);
       }
     }
   }
