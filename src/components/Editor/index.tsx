@@ -99,17 +99,12 @@ function Editor() {
               </button>
               <TextEditorInputs
                 tailwindStyle={selectedComponent.tailwindStyle}
+                nullingComponent={() => setSelectedComponent(null)}
               />
             </>
           )}
         </div>
-        <button
-          onClick={(e) => {
-            setSelectedComponent(null);
-          }}
-        >
-          Voltar
-        </button>
+
         <div className="w-[72rem] bg-zinc-900  h-full select-none "></div>
       </div>
     </div>

@@ -13,10 +13,12 @@ type Topic = {
 
 const SortedTopicsProvider = ({ children }: { children: React.ReactNode }) => {
   const [sortedTopics, setSortedTopics] = useState<Topic[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   function changingTopics(topic: Topic) {
+    console.log(sortedTopics);
     const topicFinded = sortedTopics?.findIndex(
-      (element) => element.index === topic.index
+      (element) => element.index === currentIndex
     );
     if (topicFinded) {
       sortedTopics?.splice(topicFinded, 1, topic);
@@ -38,15 +40,13 @@ const SortedTopicsProvider = ({ children }: { children: React.ReactNode }) => {
         font: "normal",
         content: "",
         align: "start",
-        index: sortedTopics.length === 0 ? 0 : sortedTopics.length + 1,
+        index: sortedTopics.length + 1,
       },
     ]);
-    console.log(sortedTopics);
   }
 
   function removingTopic() {
     sortedTopics.pop();
-    console.log(sortedTopics);
   }
 
   return (
